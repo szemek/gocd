@@ -10,6 +10,7 @@ RUN apt-get update
 RUN apt-get install -y openjdk-8-jre-headless
 RUN apt-get install -y go-agent
 RUN apt-get install -y git
+RUN su - go -c 'mkdir -p /var/go/.ssh'
 RUN su - go -c 'ssh-keyscan github.com > /var/go/.ssh/known_hosts'
 
 ADD files/etc/my_init.d/01_gocd_agent.sh /etc/my_init.d/01_gocd_agent.sh
