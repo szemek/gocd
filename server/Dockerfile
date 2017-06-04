@@ -19,4 +19,7 @@ RUN chmod 0755 /etc/my_init.d/01_gocd_server.sh
 ADD files/etc/my_init.d/02_ssh_key.sh /etc/my_init.d/02_ssh_key.sh
 RUN chmod 0755 /etc/my_init.d/02_ssh_key.sh
 
+# Python
+RUN apt-get install -y python-minimal
+
 CMD ["/sbin/my_init"]

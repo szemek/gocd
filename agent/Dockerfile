@@ -19,11 +19,19 @@ RUN chmod 0755 /etc/my_init.d/01_gocd_agent.sh
 ADD files/etc/my_init.d/02_ssh_key.sh /etc/my_init.d/02_ssh_key.sh
 RUN chmod 0755 /etc/my_init.d/02_ssh_key.sh
 
+# Python
+RUN apt-get install -y python-minimal
+
 # Node.js
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" >> /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install yarn
+
+# PHP
+RUN add-apt-repository ppa:ondrej/php
+RUN apt-get update
+RUN apt-get install -y --force-yes php7.0-fpm php7.0-mysql php7.0-curl php7.0-xml php7.0-bcmath php7.0-mcrypt php7.0-mbstring
 
 CMD ["/sbin/my_init"]
