@@ -16,4 +16,7 @@ RUN su - go -c 'ssh-keyscan github.com > /var/go/.ssh/known_hosts'
 ADD files/etc/my_init.d/01_gocd_server.sh /etc/my_init.d/01_gocd_server.sh
 RUN chmod 0755 /etc/my_init.d/01_gocd_server.sh
 
+ADD files/etc/my_init.d/02_ssh_key.sh /etc/my_init.d/02_ssh_key.sh
+RUN chmod 0755 /etc/my_init.d/02_ssh_key.sh
+
 CMD ["/sbin/my_init"]
